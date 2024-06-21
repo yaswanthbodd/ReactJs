@@ -15,6 +15,13 @@ const ToDoList = () => {
         setTodoList([...todoList,newTask])
     }
 
+    const deleteTask = (taskName)=>{
+        const newTodoList = todoList.filter((task)=>{
+            return task!== taskName
+        })
+        setTodoList(newTodoList)
+    }
+
   return (
     <div>
         <div className='addTask'>
@@ -23,8 +30,13 @@ const ToDoList = () => {
         </div>
         <div className='list'>
             {todoList.map((task)=>{
-                return <h1>{task}</h1>
-            })}
+                return (
+                <div>
+                    <h1>{task}</h1>
+                <button onClick={() => deleteTask(task)}>x</button>
+                </div>
+           ) })}
+            
         </div>
     </div>
   )
